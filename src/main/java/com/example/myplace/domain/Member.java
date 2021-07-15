@@ -41,5 +41,5 @@ public class Member {
     private List<Role> roles = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    private List<Place> places;
+    private List<Place> places = new ArrayList<>();
 }
