@@ -1,5 +1,7 @@
 package com.example.myplace.domain;
 
+import com.example.myplace.domain.dto.MemberDTO;
+import com.example.myplace.domain.dto.PlaceDTO;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,13 +12,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity @Getter
+@Entity
+@Getter
 @Table(name = "tb_member")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicUpdate
 public class Member {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private Long id;
 
@@ -42,4 +46,54 @@ public class Member {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Place> places = new ArrayList<>();
+
+    public Member(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+
+        this.joindate = LocalDate.now();
+    }
+
+    public MemberDTO convertDTO() {
+        MemberDTO dto = new MemberDTO(
+                id,
+                username,
+                password,
+                enabled,
+                email,
+                joindate
+        );
+
+        return dto;
+    }
+
+    public List<PlaceDTO> getPlaceDTOs() {
+        List<PlaceDTO> list = new ArrayList<>();
+
+        for(Place place : places) {
+            list.add(place.convertDTO());
+        }
+
+        return list;
+    }
+
+    public static Member create(MemberDTO dto, Role... roles) {
+        Member member = new Member(
+                dto.getUsername(),
+                dto.getPassword(),
+                dto.getEmail()
+        );
+
+        for(Role role : roles) {
+            member.setRole(role);
+        }
+
+        return member;
+    }
+
+    private void setRole(Role role) {
+        this.roles.add(role);
+        role.getMembers().add(this);
+    }
 }
