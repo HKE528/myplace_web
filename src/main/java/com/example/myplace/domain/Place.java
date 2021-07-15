@@ -11,6 +11,7 @@ import java.time.LocalDate;
 
 @Entity @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "tb_place")
 @DynamicUpdate
 public class Place {
 
