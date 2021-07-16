@@ -44,20 +44,38 @@
 
             </div>
 
-            <!--
-            <div class="col-3 border-end border-3 border-secondary">
+            <div class="col-3 border-end border-3 border-secondary" id="colInfoAdd" style="display: none;">
                 <div class="darkNavi ps-2 w-100 h-100">
-                    &lt;!&ndash;<div th:replace="layouts/layout :: infoLayout"> </div>&ndash;&gt;
-                    &lt;!&ndash;<div th:replace="layouts/layout :: addLayout"> </div>&ndash;&gt;
+                    <div id="infoLayout" style="display: none;">
+                        <div th:replace="layouts/layout :: infoLayout"> </div>
+                    </div>
+                    <div id="addLayout" style="display: none;">
+                        <div th:replace="layouts/layout :: addLayout"> </div>
+                    </div>
                 </div>
             </div>
-            -->
 
             <div class="col bg-success position-relative">
                 <div th:replace="layouts/map :: map" > </div>
 
-                <div class="position-absolute top-0 start-0">
-                    <button class="btn btn-primary btn-plus">+</button>
+                <div id="btnAdd">
+                    <div th:replace="layouts/button :: add" > </div>
+                </div>
+
+                <div id="btnClose" style="display: none;">
+                    <div th:replace="layouts/button :: close" > </div>
+                </div>
+
+                <div id="btnEdit" style="display: none;">
+                    <div th:replace="layouts/button :: edit" > </div>
+                </div>
+
+                <div id="btnDelete" style="display: none;">
+                    <div th:replace="layouts/button :: delete" > </div>
+                </div>
+
+                <div id="btnComplete" style="display: none;">
+                    <div th:replace="layouts/button :: complete" > </div>
                 </div>
             </div>
         </div>
