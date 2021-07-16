@@ -15,6 +15,7 @@
 
     <div class="w-100 bg-light p-2" style="height: 84.4vh;">
       <form id="addForm" th:action="@{/api/place/add}">
+        <input type="hidden" name="lonlat" value="1234,1234">
         <div class="mb-4">
           <label for="name" class="form-label">이름</label>
           <input type="text" class="form-control" id="name" name="name">
@@ -22,7 +23,7 @@
 
         <div class="mb-4">
           <label for="disabledSelect" class="form-label">그룹</label>
-          <select id="disabledSelect" class="form-select" name="">
+          <select id="disabledSelect" class="form-select" name="category">
             <option value="카페">카페</option>
             <option value="식당">식당</option>
             <option value="편의점">편의점</option>
@@ -34,17 +35,17 @@
 
         <div class="mb-4">
           <label for="address" class="form-label">주소</label>
-          <input type="text" class="form-control" id="address">
+          <input type="text" class="form-control" id="address" name="address">
         </div>
 
         <div class="mb-4">
           <label for="phone" class="form-label">전화번호</label>
-          <input type="text" class="form-control" id="phone">
+          <input type="text" class="form-control" id="phone" name="phone">
         </div>
 
         <div class="mb-4">
           <label for="comment" class="form-label">메모</label>
-          <textarea class="form-control" rows="3" id="comment" placeholder="간단한 메모"></textarea>
+          <textarea class="form-control" rows="3" id="comment" name="comment" placeholder="간단한 메모"></textarea>
         </div>
 
         <div class="mb-4">
