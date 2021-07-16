@@ -56,6 +56,8 @@ public class Place {
         this.phone = phone;
         this.comment = comment;
         this.rating = rating;
+
+        addDate = LocalDate.now();
     }
 
     public PlaceDTO convertDTO() {
@@ -80,7 +82,7 @@ public class Place {
                 dto.getName(),
                 dto.getCategory(),
                 dto.getAddress(),
-                dto.getLonLat(),
+                dto.getLonlat(),
                 dto.getPhone(),
                 dto.getComment(),
                 dto.getRating()
