@@ -1,21 +1,36 @@
 const col = document.getElementById('colInfoAdd');
 const addLayout = document.getElementById('addLayout');
 const infoLayout = document.getElementById('infoLayout');
+const closeBtn = document.getElementById('btnClose');
+const editBtn = document.getElementById('btnEdit');
+const deleteBtn = document.getElementById('btnDelete');
 
 function clickAdd() {
     setVisible(col);
     setInvisible(infoLayout);
     setVisible(addLayout);
+    setVisible(closeBtn);
+
+    console.log("clockAdd()")
 }
 
 function clickClose() {
     setInvisible(col)
+    setInvisible(infoLayout);
+    setInvisible(addLayout);
+    setInvisible(closeBtn);
+    setInvisible(editBtn);
+    setInvisible(deleteBtn);
 }
 
 function clickListItem() {
         setVisible(col);
         setInvisible(addLayout);
         setVisible(infoLayout);
+
+        setVisible(btnClose);
+        setVisible(btnEdit);
+        setVisible(btnDelete);
 }
 
 function setVisible(div){

@@ -7,11 +7,11 @@
     <!-- 페이지 독립 css, js 추가 영역 -->
 </head>
     <div class="position-absolute top-0 start-0" th:fragment="close">
-        <button class="btn btn-secondary btn-custom-close">x</button>
+        <button class="btn btn-secondary btn-custom-close" onclick="clickClose();">x</button>
     </div>
 
     <div class="position-absolute top-0 start-0" th:fragment="add">
-        <button class="btn btn-primary btn-plus">+</button>
+        <button class="btn btn-primary btn-plus" onclick="clickAdd();">+</button>
     </div>
 
     <div class="position-absolute top-0 start-0" th:fragment="complete">
