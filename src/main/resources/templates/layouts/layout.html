@@ -14,17 +14,21 @@
     </div>
 
     <div class="w-100 bg-light p-2" style="height: 84.4vh;">
-      <form>
+      <form id="addForm" th:action="@{/api/place/add}">
         <div class="mb-4">
           <label for="name" class="form-label">이름</label>
-          <input type="text" class="form-control" id="name">
+          <input type="text" class="form-control" id="name" name="name">
         </div>
 
         <div class="mb-4">
           <label for="disabledSelect" class="form-label">그룹</label>
-          <select id="disabledSelect" class="form-select">
-            <option>음식점</option>
-            <option>카페</option>
+          <select id="disabledSelect" class="form-select" name="">
+            <option value="카페">카페</option>
+            <option value="식당">식당</option>
+            <option value="편의점">편의점</option>
+            <option value="마트">마트</option>
+            <option value="쇼핑">쇼핑</option>
+            <option value="기타">기타</option>
           </select>
         </div>
 
@@ -48,7 +52,7 @@
           <input type="file" class="form-control" id="upload">
         </div>
 
-        <button type="submit" class="btn btn-primary">완료</button>
+        <button type="submit" class="btn btn-primary">작성 완료</button>
         <button type="reset" class="btn btn-warning">다시 입력</button>
       </form>
     </div>
