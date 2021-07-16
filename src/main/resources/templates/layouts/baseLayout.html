@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 공통 css -->
+  <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+  <link rel="stylesheet" href="/css/ol/ol.css">
+  <link rel="stylesheet" href="/css/color.css">
+
+  <!-- 공동 js -->
+  <!--<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>-->
+  <script src="/js/bootstrap/bootstrap.js"></script>
+  <script src="/js/ol/ol.js"></script>
+
+</head>
+
+<header th:replace="fragments/header :: headerFragment"></header>
+
+<body layout:fragment="content"></body>
+
+<footer th:replace="fragments/footer :: footerFragment"></footer>
+</html>
