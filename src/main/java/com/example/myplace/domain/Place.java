@@ -31,7 +31,7 @@ public class Place {
     private String address;
 
     @Column(nullable = false, length = 60)
-    private String lonLat;
+    private String lonlat;
 
     @Column(length = 20)
     private String phone;
@@ -48,11 +48,11 @@ public class Place {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    public Place(String name, CategoryEnum category, String address, String lonLat, String phone, String comment, float rating) {
+    public Place(String name, CategoryEnum category, String address, String lonlat, String phone, String comment, float rating) {
         this.name = name;
         this.category = category;
         this.address = address;
-        this.lonLat = lonLat;
+        this.lonlat = lonlat;
         this.phone = phone;
         this.comment = comment;
         this.rating = rating;
@@ -64,7 +64,7 @@ public class Place {
                 name,
                 category,
                 address,
-                lonLat,
+                lonlat,
                 phone,
                 comment,
                 rating,
