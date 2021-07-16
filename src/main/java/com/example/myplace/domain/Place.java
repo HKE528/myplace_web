@@ -1,6 +1,7 @@
 package com.example.myplace.domain;
 
 import com.example.myplace.domain.dto.PlaceDTO;
+import com.example.myplace.domain.enums.CategoryEnum;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,8 @@ public class Place {
     private String name;
 
     @Column(nullable = false, length = 20)
-    private String category;
+    @Enumerated(EnumType.STRING)
+    private CategoryEnum category;
 
     @Column(nullable = false, length = 100)
     private String address;
@@ -46,7 +48,7 @@ public class Place {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    public Place(String name, String category, String address, String lonLat, String phone, String comment, float rating) {
+    public Place(String name, CategoryEnum category, String address, String lonLat, String phone, String comment, float rating) {
         this.name = name;
         this.category = category;
         this.address = address;
@@ -77,7 +79,7 @@ public class Place {
         Place place = new Place(
                 dto.getName(),
                 dto.getCategory(),
-                dto.getCategory(),
+                dto.getAddress(),
                 dto.getLonLat(),
                 dto.getPhone(),
                 dto.getComment(),

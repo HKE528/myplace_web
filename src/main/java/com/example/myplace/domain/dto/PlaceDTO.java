@@ -1,5 +1,6 @@
 package com.example.myplace.domain.dto;
 
+import com.example.myplace.domain.enums.CategoryEnum;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +13,7 @@ public class PlaceDTO {
 
     private Long id;
     private String name;
-    private String category;
+    private CategoryEnum category;
     private String address;
     private String lonLat;
     private String phone;
@@ -21,7 +22,7 @@ public class PlaceDTO {
     private String dir;
     private LocalDate addDate;
 
-    public PlaceDTO(Long id, String name, String category, String address, String lonLat, String phone, String comment, float rating, String dir, LocalDate addDate) {
+    public PlaceDTO(Long id, String name, CategoryEnum category, String address, String lonLat, String phone, String comment, float rating, String dir, LocalDate addDate) {
         this.id = id;
         this.name = name;
         this.category = category;
