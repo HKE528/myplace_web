@@ -5,6 +5,10 @@ const closeBtn = document.getElementById('btnClose');
 const editBtn = document.getElementById('btnEdit');
 const deleteBtn = document.getElementById('btnDelete');
 
+const addForm = document.getElementById("addForm");
+
+addForm.addEventListener('submit', clickClose())
+
 function clickAdd() {
     setVisible(col);
     setInvisible(infoLayout);
