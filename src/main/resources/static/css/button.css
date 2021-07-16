@@ -1,0 +1,43 @@
+.btn-plus {
+    width: 25px;
+    height: 65px;
+    padding: 0.2rem;
+    background-color: #FF596D;
+    border-color: #FF596D;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-top: 50%;
+}
+
+.btn-custom-close {
+    width: 25px;
+    height: 65px;
+    padding: 0.2rem;
+    background-color: #01A7F0;
+    border-color: #01A7F0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-top: 310%;
+}
+
+.btn-edit {
+    width: 25px;
+    height: 65px;
+    padding: 0.2rem;
+    background-color: #7FD000;
+    border-color: #7FD000;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-bottom: 310%;
+}
+
+.btn-delete {
+    width: 25px;
+    height: 65px;
+    padding: 0.2rem;
+    background-color: #7F7F7F;
+    border-color: #7F7F7F;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-bottom: 50%;
+}
