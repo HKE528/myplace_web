@@ -52,3 +52,7 @@
     border-bottom-left-radius: 0;
     margin-bottom: 50%;
 }
+
+.cate:hover{
+    -webkit-filter: invert(20%);
+}

@@ -13,3 +13,7 @@
 .lightSkyBlue {
     background-color: #58D3F7;
 }
+
+.invertColor {
+    -webkit-filter: invert(100%);
+}
