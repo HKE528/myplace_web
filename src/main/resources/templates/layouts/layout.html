@@ -25,7 +25,7 @@
           <label for="disabledSelect" class="form-label">그룹</label>
           <select id="disabledSelect" class="form-select" name="category">
             <option value="카페">카페</option>
-            <option value="식당">식당</option>
+            <option value="음식점">음식점</option>
             <option value="편의점">편의점</option>
             <option value="마트">마트</option>
             <option value="쇼핑">쇼핑</option>
@@ -53,7 +53,7 @@
           <input type="file" class="form-control" id="upload">
         </div>
 
-        <button type="submit" class="btn btn-primary">작성 완료</button>
+        <button type="button" id="addSubmitBtn" class="btn btn-primary" onclick="clickAddSubmit()">작성 완료</button>
         <button type="reset" class="btn btn-warning">다시 입력</button>
       </form>
     </div>
