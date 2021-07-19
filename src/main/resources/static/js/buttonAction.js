@@ -17,22 +17,22 @@ async function clickAddSubmit() {
         credentials: 'same-origin',
         headers: {
             "X-CSRF-Token": csrfToken
-          },
+        },
         body: new URLSearchParams(new FormData(addForm))
-        //body: new URLSearchParams(form)
-    }) .then(res => {
-            if(res.ok) {
-                alert("추가 완료!")
+            //body: new URLSearchParams(form)
+    }).then(res => {
+        if (res.ok) {
+            alert("추가 완료!")
 
-                addForm.reset();
+            addForm.reset();
 
-                clickClose();
+            clickClose();
 
-            } else {
-                //로그인 화면으로!
-                alert("..")
-            }
-        });
+        } else {
+            //로그인 화면으로!
+            alert("..")
+        }
+    });
 
     $("#placeListDiv").load(location.href + ' #placeListDiv');
 }
@@ -63,37 +63,60 @@ const placeInfoPhone = document.getElementById('placeInfoPhone');
 const placeInfoComment = document.getElementById('placeInfoComment');
 
 function clickListItem(id) {
-        curId = id;
+    curId = id;
 
-        setVisible(col);
-        setInvisible(addLayout);
-        setVisible(infoLayout);
+    setVisible(col);
+    setInvisible(addLayout);
+    setVisible(infoLayout);
 
-        setVisible(btnClose);
-        setVisible(btnEdit);
-        setVisible(btnDelete);
+    setVisible(btnClose);
+    setVisible(btnEdit);
+    setVisible(btnDelete);
 
-        fetch('/api/place/view/' + id)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
+    fetch('/api/place/view/' + id)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
 
-                placeInfoName.innerText = data.name;
-                placeInfoCategory.innerText = data.category;
-                placeInfoAddress.innerText = data.address;
-                placeInfoPhone.innerText = data.phone;
-                placeInfoComment.innerText = data.comment
+            placeInfoName.innerText = data.name;
+            placeInfoCategory.innerText = data.category;
+            placeInfoAddress.innerText = data.address;
+            placeInfoPhone.innerText = data.phone;
+            placeInfoComment.innerText = data.comment
         });
 }
 
-function setVisible(div){
-    if(div.style.display === 'none')  {
+async function clickDelete() {
+    let csrfToken = document.querySelector("meta[name='_csrf']").content;
+
+    let resp = confirm("정말로 삭제할까요?");
+
+    if (resp && curId != -1) {
+        await fetch('/api/place/delete/' + curId, {
+                method: 'delete',
+                credentials: 'same-origin',
+                headers: { "X-CSRF-Token": csrfToken }
+            })
+            .then(res => {
+                if (res.ok) {
+                    clickClose();
+                } else {
+                    alert("..")
+                }
+            });
+
+        $("#placeListDiv").load(location.href + ' #placeListDiv');
+    }
+}
+
+function setVisible(div) {
+    if (div.style.display === 'none') {
         div.style.display = 'block';
     }
 }
 
 function setInvisible(div) {
-    if(div.style.display === 'block')  {
-            div.style.display = 'none';
+    if (div.style.display === 'block') {
+        div.style.display = 'none';
     }
 }

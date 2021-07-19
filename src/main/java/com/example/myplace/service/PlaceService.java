@@ -36,4 +36,8 @@ public class PlaceService {
 
         return member.getPlaceDTOs();
     }
+
+    public void deleteOne(Long id) {
+        placeRepository.deleteById(id);
+    }
 }

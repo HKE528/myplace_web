@@ -27,4 +27,9 @@ public class PlaceApiController {
 
         return place;
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deletePlace(@PathVariable("id") Long id) {
+        placeService.deleteOne(id);
+    }
 }
