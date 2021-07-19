@@ -22,10 +22,8 @@ public class PlaceApiController {
     }
 
     @GetMapping("/view/{id}")
-    public PlaceDTO viewPlace(@PathVariable("id") Long id, Model model) {
+    public PlaceDTO viewPlace(@PathVariable("id") Long id) {
         PlaceDTO place = placeService.findOne(id);
-
-        model.addAttribute("place", place);
 
         return place;
     }

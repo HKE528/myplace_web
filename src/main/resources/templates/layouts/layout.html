@@ -62,15 +62,17 @@
 </div>
 
 <div th:fragment="infoLayout">
-    <div class="border-start border-secondary h-100">
+    <div class="border-start border-secondary h-100" id="showPlaceInfo">
+
+        <th:block th:object="${placeInfo}">
             <div class="pt-2 ps-1 border-bottom border-secondary">
-                <h3 class="text-white">이름</h3>
+                <h3 class="text-white" id="placeInfoName">이름</h3>
             </div>
 
             <div class="lightNavi px-2 pt-1 w-100 border-bottom border-secondary">
                 <div class="d-flex justify-content-between">
-                    <h5 class="text-light">카테고리</h5>
-                    <h5 class="text-light">★★★★★</h5>
+                    <h5 class="text-light" id="placeInfoCategory">카테고리</h5>
+                    <h5 class="text-light" id="placeInfoRating">★★★★★</h5>
                 </div>
             </div>
 
@@ -80,17 +82,19 @@
                 </div>
                 <div class="w-100 mt-2 pb-1 py-2 border-bottom">
                     <h3> 주소 </h3>
-                    <h5> 강원도 춘천시 어쩌고 저쩌고</h5>
+                    <h5 id="placeInfoAddress"> 강원도 춘천시 어쩌고 저쩌고</h5>
                 </div>
                 <div class="w-100 mt-2 pb-1 py-2 border-bottom">
                     <h3> 전화번호 </h3>
-                    <h5> 033-000-0000</h5>
+                    <h5 id="placeInfoPhone"> 033-000-0000</h5>
                 </div>
                 <div class="w-100 mt-2 pb-1 py-2 border-bottom">
                     <h3> 메모 </h3>
-                    <h5> 메모메모 커피 맛있는집 메모메모</h5>
+                    <h5 id="placeInfoComment"> 메모메모 커피 맛있는집 메모메모</h5>
                 </div>
             </div>
+        </th:block>
+
     </div>
 </div>
 

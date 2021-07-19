@@ -51,6 +51,13 @@ function clickClose() {
     setInvisible(deleteBtn);
 }
 
+const placeInfoName = document.getElementById('placeInfoName');
+const placeInfoCategory = document.getElementById('placeInfoCategory');
+const placeInfoRating = document.getElementById('placeInfoRating');
+const placeInfoAddress = document.getElementById('placeInfoAddress');
+const placeInfoPhone = document.getElementById('placeInfoPhone');
+const placeInfoComment = document.getElementById('placeInfoComment');
+
 function clickListItem(id) {
         setVisible(col);
         setInvisible(addLayout);
@@ -60,7 +67,17 @@ function clickListItem(id) {
         setVisible(btnEdit);
         setVisible(btnDelete);
 
-        console.log('Content ID : ' + id);
+        fetch('/api/place/view/' + id)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                placeInfoName.innerText = data.name;
+                placeInfoCategory.innerText = data.category;
+                placeInfoAddress.innerText = data.address;
+                placeInfoPhone.innerText = data.phone;
+                placeInfoComment.innerText = data.comment
+            });
 }
 
 function setVisible(div){
