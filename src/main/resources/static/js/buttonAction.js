@@ -7,15 +7,45 @@ const deleteBtn = document.getElementById('btnDelete');
 
 const addForm = document.getElementById("addForm");
 
-addForm.addEventListener('submit', clickClose())
+//function addCsrfHeader(form) {
+//    let csrfToken = document.querySelector("meta[name='_csrf']").content;
+//    let csrfHeader = document.querySelector("meta[name='_csrf_header']").content;
+//
+//    form.append(csrfHeader, csrfToken);
+//
+//    return form;
+//}
+
+async function clickAddSubmit() {
+    let csrfToken = document.querySelector("meta[name='_csrf']").content;
+
+    await fetch('/api/place/add', {
+        method: 'post',
+        credentials: 'same-origin',
+        headers: {
+            "X-CSRF-Token": csrfToken
+          },
+        body: new URLSearchParams(new FormData(addForm))
+        //body: new URLSearchParams(form)
+    }) .then(res => {
+            if(res.ok) {
+                alert("추가 완료!")
+
+                addForm.reset();
+
+                clickClose();
+            } else {
+                //로그인 화면으로!
+                alert("..")
+            }
+        });
+}
 
 function clickAdd() {
     setVisible(col);
     setInvisible(infoLayout);
     setVisible(addLayout);
     setVisible(closeBtn);
-
-    console.log("clockAdd()")
 }
 
 function clickClose() {
