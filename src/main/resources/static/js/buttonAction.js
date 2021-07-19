@@ -7,6 +7,8 @@ const deleteBtn = document.getElementById('btnDelete');
 
 const addForm = document.getElementById("addForm");
 
+var curId = -1;
+
 async function clickAddSubmit() {
     let csrfToken = document.querySelector("meta[name='_csrf']").content;
 
@@ -49,6 +51,8 @@ function clickClose() {
     setInvisible(closeBtn);
     setInvisible(editBtn);
     setInvisible(deleteBtn);
+
+    curId = -1;
 }
 
 const placeInfoName = document.getElementById('placeInfoName');
@@ -59,6 +63,8 @@ const placeInfoPhone = document.getElementById('placeInfoPhone');
 const placeInfoComment = document.getElementById('placeInfoComment');
 
 function clickListItem(id) {
+        curId = id;
+
         setVisible(col);
         setInvisible(addLayout);
         setVisible(infoLayout);
@@ -77,7 +83,7 @@ function clickListItem(id) {
                 placeInfoAddress.innerText = data.address;
                 placeInfoPhone.innerText = data.phone;
                 placeInfoComment.innerText = data.comment
-            });
+        });
 }
 
 function setVisible(div){
