@@ -1,9 +1,9 @@
 package com.example.myplace.controller;
 
-import com.example.myplace.domain.dto.MemberDTO;
 import com.example.myplace.domain.dto.PlaceDTO;
 import com.example.myplace.service.PlaceService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -22,7 +22,11 @@ public class PlaceApiController {
     }
 
     @GetMapping("/view/{id}")
-    public void viewPlace(@PathVariable("id") Long id) {
+    public PlaceDTO viewPlace(@PathVariable("id") Long id, Model model) {
+        PlaceDTO place = placeService.findOne(id);
 
+        model.addAttribute("place", place);
+
+        return place;
     }
 }
