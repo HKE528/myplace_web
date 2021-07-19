@@ -37,12 +37,9 @@
                         </div>
 
                         <div class="row g-0 mt-2 mx-2">
-                            <div class="list-group w-100">
-                                <div th:replace="fragments/item :: listItem('')"></div>
-                                <div th:replace="fragments/item :: listItem('')"></div>
-                                <div th:replace="fragments/item :: listItem('')"></div>
-                            </div>
+                            <div th:replace="layouts/layout :: ListLayout"></div>
                         </div>
+
                     </div>
                 </div>
 
@@ -61,8 +58,6 @@
 
             <div class="col bg-success position-relative">
                 <div th:replace="layouts/map :: map" > </div>
-
-
 
                 <div id="btnClose" style="display: none;">
                     <div th:replace="layouts/button :: close" > </div>
