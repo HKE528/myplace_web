@@ -35,6 +35,11 @@ async function clickAddSubmit() {
 }
 
 function clickAdd() {
+    clickClose();
+
+    placeLayoutTitle.innerText = "장소 추가";
+    addForm.reset();
+
     setVisible(col);
     setInvisible(infoLayout);
     setVisible(addLayout);
@@ -58,6 +63,8 @@ const placeInfoRating = document.getElementById('placeInfoRating');
 const placeInfoAddress = document.getElementById('placeInfoAddress');
 const placeInfoPhone = document.getElementById('placeInfoPhone');
 const placeInfoComment = document.getElementById('placeInfoComment');
+
+const placeLayoutTitle = document.getElementById('title');
 
 function clickListItem(id) {
     curId = id;
@@ -105,8 +112,38 @@ async function clickDelete() {
     }
 }
 
+//addForm
+async function clickUpdate() {
+    placeLayoutTitle.innerText = "장소 수정";
+
+    setVisible(col);
+    setInvisible(infoLayout);
+    setVisible(addLayout);
+    setVisible(closeBtn);
+
+    document.getElementById('id').value = curId;
+    document.getElementById('name').value = placeInfoName.innerText;
+    setCategorySelect(placeInfoCategory.innerText);
+    document.getElementById('address').value = placeInfoAddress.innerText;
+    document.getElementById('phone').value = placeInfoPhone.innerText;
+    document.getElementById('comment').value = placeInfoComment.innerText;
+}
+
+function setCategorySelect(selValue) {
+    let selBox = document.getElementById('categorySelect')
+    let size = selBox.length;
+
+    for(i = 0; i < size; i++) {
+        if(selBox.options[i].value == selValue){
+            selBox.options[i].selected = true;
+            break;
+        }
+    }
+}
+
 function refreshList() {
     $("#placeListDiv").load(location.href + ' #placeListDiv');
+    curId = -1;
 }
 
 function setVisible(div) {

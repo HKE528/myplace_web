@@ -18,7 +18,14 @@ public class PlaceApiController {
     public void addPlace(PlaceDTO placeDTO, Principal principal) {
         String username = principal.getName();
 
-        placeService.savePlace(username, placeDTO);
+        if(placeDTO.getId() == null){
+            placeService.savePlace(username, placeDTO);
+        } else {
+            String name = placeDTO.getName();
+            System.out.println("Update : " + name);
+
+            placeService.updatePlace(placeDTO);
+        }
     }
 
     @GetMapping("/view/{id}")

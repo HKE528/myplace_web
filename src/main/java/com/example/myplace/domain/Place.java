@@ -93,6 +93,16 @@ public class Place {
         return place;
     }
 
+    public void changData(PlaceDTO dto) {
+        name = dto.getName();
+        category = dto.getCategory();
+        address = dto.getAddress();
+        lonlat = dto.getLonlat();
+        rating = dto.getRating();
+        phone = dto.getPhone();
+        comment = dto.getComment();
+    }
+
     private void setMember(Member member){
         this.member = member;
         member.getPlaces().add(this);

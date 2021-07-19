@@ -40,4 +40,10 @@ public class PlaceService {
     public void deleteOne(Long id) {
         placeRepository.deleteById(id);
     }
+
+    public void updatePlace(PlaceDTO dto) {
+        Place place = placeRepository.findById(dto.getId()).get();
+
+        place.changData(dto);
+    }
 }
