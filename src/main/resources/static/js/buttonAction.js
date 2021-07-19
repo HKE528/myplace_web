@@ -7,15 +7,6 @@ const deleteBtn = document.getElementById('btnDelete');
 
 const addForm = document.getElementById("addForm");
 
-//function addCsrfHeader(form) {
-//    let csrfToken = document.querySelector("meta[name='_csrf']").content;
-//    let csrfHeader = document.querySelector("meta[name='_csrf_header']").content;
-//
-//    form.append(csrfHeader, csrfToken);
-//
-//    return form;
-//}
-
 async function clickAddSubmit() {
     let csrfToken = document.querySelector("meta[name='_csrf']").content;
 
