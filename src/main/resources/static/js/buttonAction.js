@@ -22,19 +22,16 @@ async function clickAddSubmit() {
             //body: new URLSearchParams(form)
     }).then(res => {
         if (res.ok) {
-            alert("추가 완료!")
-
             addForm.reset();
 
             clickClose();
-
         } else {
             //로그인 화면으로!
             alert("..")
         }
     });
 
-    $("#placeListDiv").load(location.href + ' #placeListDiv');
+    refreshList();
 }
 
 function clickAdd() {
@@ -76,7 +73,6 @@ function clickListItem(id) {
     fetch('/api/place/view/' + id)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
 
             placeInfoName.innerText = data.name;
             placeInfoCategory.innerText = data.category;
@@ -105,8 +101,12 @@ async function clickDelete() {
                 }
             });
 
-        $("#placeListDiv").load(location.href + ' #placeListDiv');
+        refreshList();
     }
+}
+
+function refreshList() {
+    $("#placeListDiv").load(location.href + ' #placeListDiv');
 }
 
 function setVisible(div) {
