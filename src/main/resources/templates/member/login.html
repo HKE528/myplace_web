@@ -18,6 +18,13 @@
         <img class="mb-4" src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
+        <div class="alert alert-danger" role="alert" th:if="${param.error}">
+            계정 정보가 올바르지 않습니다.
+        </div>
+        <div class="alert alert-info" th:if="${param.logout}">
+            로그아웃 했습니다.
+        </div>
+
         <div class="form-floating">
             <input type="text" class="form-control" id="username" name="username" placeholder="Username">
             <label for="username">Username</label>
