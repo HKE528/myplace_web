@@ -34,11 +34,14 @@ async function clickAddSubmit() {
                 addForm.reset();
 
                 clickClose();
+
             } else {
                 //로그인 화면으로!
                 alert("..")
             }
         });
+
+    $("#placeListDiv").load(location.href + ' #placeListDiv');
 }
 
 function clickAdd() {
@@ -57,7 +60,7 @@ function clickClose() {
     setInvisible(deleteBtn);
 }
 
-function clickListItem() {
+function clickListItem(id) {
         setVisible(col);
         setInvisible(addLayout);
         setVisible(infoLayout);
@@ -65,6 +68,8 @@ function clickListItem() {
         setVisible(btnClose);
         setVisible(btnEdit);
         setVisible(btnDelete);
+
+        console.log('Content ID : ' + id);
 }
 
 function setVisible(div){
