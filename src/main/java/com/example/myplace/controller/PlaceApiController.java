@@ -3,7 +3,6 @@ package com.example.myplace.controller;
 import com.example.myplace.domain.dto.PlaceDTO;
 import com.example.myplace.service.PlaceService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -15,17 +14,22 @@ public class PlaceApiController {
     private final PlaceService placeService;
 
     @PostMapping("/add")
-    public void addPlace(PlaceDTO placeDTO, Principal principal) {
+    public String addPlace(PlaceDTO placeDTO, Principal principal) {
+        Long id;
         String username = principal.getName();
 
         if(placeDTO.getId() == null){
-            placeService.savePlace(username, placeDTO);
+            id = placeService.savePlace(username, placeDTO);
         } else {
             String name = placeDTO.getName();
             System.out.println("Update : " + name);
 
-            placeService.updatePlace(placeDTO);
+            id = placeService.updatePlace(placeDTO);
         }
+
+        System.out.println(id);
+
+        return id.toString();
     }
 
     @GetMapping("/view/{id}")
