@@ -9,4 +9,34 @@
 
     <div id="map" class="w-100 h-100" th:fragment="map"></div>
 
+    <div th:fragment="map-utils">
+        <div id="popup" class="ol-popup">
+            <div id="popup-content"></div>
+        </div>
+
+        <div style="display: none;">
+            <div id="defaultPin">
+                <img class="marker" src="/image/pin/pin.png">
+            </div>
+            <div id="cafePin">
+                <img class="marker" src="/image/pin/pin-cafe.png">
+            </div>
+            <div id="conveniencePin">
+                <img class="marker" src="/image/pin/pin-convenience.png">
+            </div>
+            <div id="martPin">
+                <img class="marker" src="/image/pin/pin-mart.png">
+            </div>
+            <div id="otherPin">
+                <img class="marker" src="/image/pin/pin-other.png">
+            </div>
+            <div id="restaurantPin">
+                <img class="marker" src="/image/pin/pin-restaurant.png">
+            </div>
+            <div id="shopPin">
+                <img class="marker" src="/image/pin/pin-shop.png">
+            </div>
+        </div>
+    </div>
+
 </html>
