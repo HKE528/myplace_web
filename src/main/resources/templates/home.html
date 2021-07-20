@@ -59,25 +59,11 @@
             <div class="col bg-success position-relative">
                 <div th:replace="layouts/map :: map" > </div>
 
-                <div id="btnClose" style="display: none;">
-                    <div th:replace="layouts/button :: close" > </div>
-                </div>
+                <div th:replace="layouts/map :: map-utils" > </div>
 
-                <div id="btnAdd">
-                    <div th:replace="layouts/button :: add" > </div>
-                </div>
+                <div th:replace="layouts/button :: buttons"> </div>
 
-                <div id="btnEdit" style="display: none;">
-                    <div th:replace="layouts/button :: edit" > </div>
-                </div>
-
-                <div id="btnDelete" style="display: none;">
-                    <div th:replace="layouts/button :: delete" > </div>
-                </div>
-
-                <div id="btnComplete" style="display: none;">
-                    <div th:replace="layouts/button :: complete" > </div>
-                </div>
+                <div th:replace="layouts/button :: buttons"> </div>
             </div>
         </div>
 
