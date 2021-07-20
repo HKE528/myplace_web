@@ -3,3 +3,9 @@
         left: auto;
         right: 8px;
 }
+
+.ol-marker-pop {
+    position: absolute;
+    left: -20px;
+    top: -40px;
+}
