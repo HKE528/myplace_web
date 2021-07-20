@@ -6,6 +6,28 @@
     <!-- layout의 head태그에 해당 내용이 자동으로 추가 된가-->
     <!-- 페이지 독립 css, js 추가 영역 -->
 </head>
+    <div th:fragment="buttons">
+        <div id="btnClose" style="display: none;">
+            <div th:replace="layouts/button :: close" > </div>
+        </div>
+
+        <div id="btnAdd">
+            <div th:replace="layouts/button :: add" > </div>
+        </div>
+
+        <div id="btnEdit" style="display: none;">
+            <div th:replace="layouts/button :: edit" > </div>
+        </div>
+
+        <div id="btnDelete" style="display: none;">
+            <div th:replace="layouts/button :: delete" > </div>
+        </div>
+
+        <div id="btnComplete" style="display: none;">
+            <div th:replace="layouts/button :: complete" > </div>
+        </div>
+    </div>
+
     <div class="position-absolute top-0 start-0" th:fragment="close">
         <button class="btn btn-secondary btn-custom-close" onclick="clickClose();">x</button>
     </div>
