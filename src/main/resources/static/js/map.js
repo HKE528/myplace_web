@@ -38,10 +38,15 @@ const clickMarker = new ol.Overlay({
     },
 });
 
-showListMarker();
+overlayRefresh();
 
 //마커 오버레이 닫기
-closeBtn2.onclick = function() { removeMarkerEvent(); }
+closeBtn2.onclick = function() {
+    removeMarkerEvent();
+    overlayRefresh();
+
+    return false;
+}
 
 btnAdd2.onclick = function() {
     map.addEventListener('singleclick', markerOverlay);
@@ -55,26 +60,22 @@ function setCenterView(lonlatString) {
     let view = map.getView();
 
     view.setCenter(coord);
-    view.setZoom(20);
+    view.setZoom(18);
 }
 
 function removeMarkerEvent() {
-        clickMarker.setPosition(undefined);
-        map.removeEventListener('singleclick', markerOverlay);
-
-        showListMarker();
-
-        return false;
+    clickMarker.setPosition(undefined);
+    map.removeEventListener('singleclick', markerOverlay);
 }
 
 function overlayRefresh() {
     map.getOverlays().clear();
     map.addOverlay(clickMarker);
+
+    makeListMarker();
 }
 
-function showListMarker() {
-    overlayRefresh();
-
+function makeListMarker() {
     list = document.querySelectorAll('.markerListInfo');
 
     list.forEach(it => {
@@ -105,11 +106,6 @@ function showListMarker() {
 
         map.addOverlay(placeMarker);
     })
-}
-
-function makeClickMarker() {
-    //마커 오버레이 생성
-
 }
 
 function markerOverlay(evt) {

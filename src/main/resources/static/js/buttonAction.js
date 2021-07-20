@@ -22,6 +22,8 @@ async function clickAddSubmit() {
             //body: new URLSearchParams(form)
     }).then(res => {
         if (res.ok) {
+            refreshList();
+
             addForm.reset();
 
             clickClose();
@@ -31,7 +33,10 @@ async function clickAddSubmit() {
         }
     });
 
-    refreshList();
+    setTimeout(function(){
+        removeMarkerEvent();
+        overlayRefresh();
+    }, 100);
 }
 
 function clickAdd() {
@@ -104,13 +109,14 @@ async function clickDelete() {
             })
             .then(res => {
                 if (res.ok) {
+                    refreshList();
                     clickClose();
                 } else {
                     alert("..")
                 }
             });
 
-        refreshList();
+        setTimeout(overlayRefresh, 100);
     }
 }
 
