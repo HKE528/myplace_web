@@ -15,7 +15,7 @@
 
         <div class="w-100 bg-light p-2 scroll-div" style="height: 84.4vh;">
             <form id="addForm" th:action="@{/api/place/add}">
-                <input type="hidden" name="lonlat" value="1234,1234">
+                <input type="hidden" name="lonlat" id="lonlat">
                 <input type="hidden" name="id" id="id">
                 <div class="mb-4">
                     <label for="name" class="form-label">이름</label>
@@ -36,7 +36,7 @@
 
                 <div class="mb-4">
                     <label for="address" class="form-label">주소</label>
-                    <input type="text" class="form-control" id="address" name="address">
+                    <textarea type="text" class="form-control" rows="3" id="address" placeholder="지도를 클릭하세요" name="address"></textarea>
                 </div>
 
                 <div class="mb-4">
@@ -46,7 +46,7 @@
 
                 <div class="mb-4">
                     <label for="comment" class="form-label">메모</label>
-                    <textarea class="form-control" rows="3" id="comment" name="comment" placeholder="간단한 메모"></textarea>
+                    <textarea class="form-control" rows="5" id="comment" name="comment" placeholder="간단한 메모"></textarea>
                 </div>
 
                 <div class="mb-4">
