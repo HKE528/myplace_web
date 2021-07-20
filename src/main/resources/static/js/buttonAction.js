@@ -116,7 +116,10 @@ async function clickDelete() {
                 }
             });
 
-        setTimeout(overlayRefresh, 100);
+            setTimeout(function(){
+                removeMarkerEvent();
+                overlayRefresh();
+            }, 100);
     }
 }
 
