@@ -1,5 +1,6 @@
 const closeBtn2 = document.getElementById('btnClose');
 const btnAdd2 = document.getElementById('btnAdd');
+const btnAdd2 = document.getElementById('btnAdd');
 
 const defaultPin = document.getElementById('defaultPin');
 const cafePin = document.getElementById('cafePin');
@@ -37,8 +38,6 @@ const clickMarker = new ol.Overlay({
 
 map.addOverlay(clickMarker);
 
-
-
 //마커 오버레이 닫기
 closeBtn2.onclick = function() {
     clickMarker.setPosition(undefined);
@@ -51,6 +50,37 @@ btnAdd2.onclick = function() {
     map.addEventListener('singleclick', markerOverlay);
     return false;
 }
+
+list = document.querySelectorAll('.markerListInfo');
+
+list.forEach(it => {
+    let address = (it.children)[0].value;
+    let lonlat = ((it.children)[1].value).split(',');
+    let category = (it.children)[2].value;
+
+    let coord = ol.proj.fromLonLat([lonlat[0]*1, lonlat[1]*1]);
+
+    let container = document.createElement('div');
+    container.classList.add('ol-marker-pop');
+
+    let content = document.createElement('div');
+
+    if(category == '카페')        content.innerHTML = cafePin.innerHTML;
+    else if(category == '음식점') content.innerHTML = restaurantPin.innerHTML;
+    else if(category == '편의점') content.innerHTML = conveniencePin.innerHTML;
+    else if(category == '마트')   content.innerHTML = martPin.innerHTML;
+    else if(category == '쇼핑')   content.innerHTML = shopPin.innerHTML;
+    else                         content.innerHTML = otherPin.innerHTML;
+
+    container.appendChild(content);
+
+    let placeMarker = new ol.Overlay({
+        element: container,
+        position: coord
+    });
+
+    map.addOverlay(placeMarker);
+})
 
 function markerOverlay(evt) {
     const coordinate = evt.coordinate;
@@ -71,4 +101,5 @@ function markerOverlay(evt) {
             lonlet.value = lonLat;
     });
 }
+
 
