@@ -2,3 +2,8 @@
     overflow: scroll;
     padding-right: 10px;
 }
+
+.marker {
+    width: 40px;
+    height: 40px;
+}
