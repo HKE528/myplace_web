@@ -56,14 +56,19 @@ function markerOverlay(evt) {
     const coordinate = evt.coordinate;
     const lonLat = ol.proj.toLonLat(coordinate);
 
+    let address = document.getElementById('address');
+    let lonlet = document.getElementById('lonlat');
+
     let url = '/geocode/address?point=' + lonLat
 
     fetch(url)
         .then(res => res.text() )
         .then(res => {
-            console.log(res);
             content.innerHTML = defaultPin.innerHTML;
             clickMarker.setPosition(coordinate);
+
+            address.value = res;
+            lonlet.value = lonLat;
     });
 }
 
