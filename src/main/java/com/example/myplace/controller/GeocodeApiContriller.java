@@ -31,7 +31,7 @@ public class GeocodeApiContriller {
             address = ((Map)result.get(0)).get("text").toString();
 
         } catch (Exception e) {
-            address = "해당 주소를 찾을 수 없습니다.";
+            address = "해당 주소를 찾을 수 없습니다. 직접 입력하거나 다시 클릭해 주세요";
         }
 
         return address;
