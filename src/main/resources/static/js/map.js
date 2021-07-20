@@ -1,4 +1,5 @@
 const closeBtn2 = document.getElementById('btnClose');
+const btnAdd2 = document.getElementById('btnAdd');
 
 const defaultPin = document.getElementById('defaultPin');
 const cafePin = document.getElementById('cafePin');
@@ -26,7 +27,7 @@ const map = new ol.Map({
 });
 
 //마커 오버레이 생성
-const marker = new ol.Overlay({
+const clickMarker = new ol.Overlay({
     element: container,
     autoPan: true,
     autoPanAnimation: {
@@ -34,16 +35,24 @@ const marker = new ol.Overlay({
     },
 });
 
+map.addOverlay(clickMarker);
+
+
+
 //마커 오버레이 닫기
 closeBtn2.onclick = function() {
-    marker.setPosition(undefined);
+    clickMarker.setPosition(undefined);
+    map.removeEventListener('singleclick', markerOverlay);
     return false;
 };
 
-map.addOverlay(marker);
+btnAdd2.onclick = function() {
+    //클릭시 마커 표시
+    map.addEventListener('singleclick', markerOverlay);
+    return false;
+}
 
-//클릭시 오버레이 표시
-map.on('singleclick', function(evt) {
+function markerOverlay(evt) {
     const coordinate = evt.coordinate;
     const lonLat = ol.proj.toLonLat(coordinate);
 
@@ -54,24 +63,7 @@ map.on('singleclick', function(evt) {
         .then(res => {
             console.log(res);
             content.innerHTML = defaultPin.innerHTML;
-//            content.innerHTML = '<p>You clicked here:</p><code>' + res + '</code>';
-
-            marker.setPosition(coordinate);
+            clickMarker.setPosition(coordinate);
     });
-});
-
-function markerOverlay(evt) {
-    const coordinate = evt.coordinate;
-        const lonLat = ol.proj.toLonLat(coordinate);
-
-        let url = '/geocode/address?point=' + lonLat
-
-        fetch(url)
-            .then(res => res.text() )
-            .then(res => {
-                clickPosition.innerHTML = '<p>You clicked here:</p><code>' + lonLat + '</code>';
-                content.innerHTML = '<p>You clicked here:</p><code>' + res + '</code>';
-                overlay.setPosition(coordinate);
-        });
 }
 
