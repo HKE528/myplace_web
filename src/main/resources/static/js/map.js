@@ -48,6 +48,16 @@ btnAdd2.onclick = function() {
     return false;
 }
 
+function setCenterView(lonlatString) {
+    let lonlat = lonlatString.split(',');
+    let coord = ol.proj.fromLonLat([lonlat[0]*1, lonlat[1]*1]);
+
+    let view = map.getView();
+
+    view.setCenter(coord);
+    view.setZoom(20);
+}
+
 function removeMarkerEvent() {
         clickMarker.setPosition(undefined);
         map.removeEventListener('singleclick', markerOverlay);

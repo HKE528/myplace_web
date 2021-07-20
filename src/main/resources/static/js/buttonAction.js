@@ -66,7 +66,7 @@ const placeInfoComment = document.getElementById('placeInfoComment');
 
 const placeLayoutTitle = document.getElementById('title');
 
-function clickListItem(id) {
+async function clickListItem(id) {
     curId = id;
 
     setVisible(col);
@@ -77,7 +77,7 @@ function clickListItem(id) {
     setVisible(btnEdit);
     setVisible(btnDelete);
 
-    fetch('/api/place/view/' + id)
+    await fetch('/api/place/view/' + id)
         .then(res => res.json())
         .then(data => {
 
@@ -86,6 +86,8 @@ function clickListItem(id) {
             placeInfoAddress.innerText = data.address;
             placeInfoPhone.innerText = data.phone;
             placeInfoComment.innerText = data.comment
+
+            setCenterView(data.lonlat);
         });
 }
 
