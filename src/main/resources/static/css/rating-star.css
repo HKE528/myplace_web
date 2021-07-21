@@ -26,7 +26,6 @@
     height: 20px;
     float:left;
     text-indent: -9999px;
-    cursor: pointer;
 }
 .static-starR{
     background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
@@ -35,7 +34,6 @@
     height: 20px;
     float:left;
     text-indent: -9999px;
-    cursor: pointer;
 }
 .static-starL.on{background-position:0 0;}
 .static-starR.on{background-position:-10px 0;}
