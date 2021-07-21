@@ -17,6 +17,22 @@
             <form id="addForm" th:action="@{/api/place/add}">
                 <input type="hidden" name="lonlat" id="lonlat">
                 <input type="hidden" name="id" id="id">
+
+                <div class="starRev mb-4">
+                    <label class="form-label" for="rating"></label>
+                    <input type="hidden" name="rating" id="rating">
+                    <span class="starL on">별_왼쪽</span>
+                    <span class="starR">별_오른쪽</span>
+                    <span class="starL">별_왼쪽</span>
+                    <span class="starR">별_오른쪽</span>
+                    <span class="starL">별_왼쪽</span>
+                    <span class="starR">별_오른쪽</span>
+                    <span class="starL">별_왼쪽</span>
+                    <span class="starR">별_오른쪽</span>
+                    <span class="starL">별_왼쪽</span>
+                    <span class="starR">별_오른쪽</span>
+                </div>
+
                 <div class="mb-4">
                     <label for="name" class="form-label">이름</label>
                     <input type="text" class="form-control" id="name" name="name">
@@ -35,18 +51,18 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="address" class="form-label">주소</label>
-                    <textarea type="text" class="form-control" rows="3" id="address" placeholder="지도를 클릭하세요" name="address"></textarea>
-                </div>
-
-                <div class="mb-4">
                     <label for="phone" class="form-label">전화번호</label>
                     <input type="text" class="form-control" id="phone" name="phone">
                 </div>
 
                 <div class="mb-4">
+                    <label for="address" class="form-label">주소</label>
+                    <textarea type="text" class="form-control" rows="3" id="address" placeholder="지도를 클릭하세요" name="address"></textarea>
+                </div>
+
+                <div class="mb-4">
                     <label for="comment" class="form-label">메모</label>
-                    <textarea class="form-control" rows="5" id="comment" name="comment" placeholder="간단한 메모"></textarea>
+                    <textarea class="form-control" rows="3" id="comment" name="comment" placeholder="간단한 메모"></textarea>
                 </div>
 
                 <div class="mb-4">
