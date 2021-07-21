@@ -56,3 +56,8 @@
 .cate:hover{
     -webkit-filter: invert(20%);
 }
+
+.selected {
+    margin-left: 5px;
+    background-color: #7F7F7F;
+}
