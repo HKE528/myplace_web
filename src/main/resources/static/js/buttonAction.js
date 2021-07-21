@@ -95,6 +95,8 @@ async function clickListItem(id) {
             placeInfoPhone.innerText = data.phone;
             placeInfoComment.innerText = data.comment
 
+            showRating(data.rating);
+
             setCenterView(data.lonlat);
         });
 }

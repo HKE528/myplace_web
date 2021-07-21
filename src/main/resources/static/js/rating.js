@@ -8,3 +8,14 @@ $('.starRev span').click(function(){
 
   return false;
 });
+
+function showRating(rating) {
+    let stars = $('.static-star').children('span');
+
+    stars.removeClass('on');
+
+    for(var i = 0; i < rating; i++) {
+        let star = $('.static-star').children('span')[i];
+        star.classList.add('on')
+    }
+}
