@@ -7,6 +7,7 @@
     <!-- 페이지 독립 css, js 추가 영역 -->
 </head>
 
+<!-- 장소 추가 -->
 <div th:fragment="addLayout">
     <div class="border-start border-secondary h-100">
         <div class="pt-2 ps-1 border-bottom border-secondary">
@@ -78,6 +79,7 @@
     </div>
 </div>
 
+<!-- 장소 정보 -->
 <div th:fragment="infoLayout">
     <div class="border-start border-secondary h-100 scroll-div" id="showPlaceInfo">
 
@@ -89,7 +91,20 @@
             <div class="lightNavi px-2 pt-1 w-100 border-bottom border-secondary">
                 <div class="d-flex justify-content-between">
                     <h5 class="text-light" id="placeInfoCategory">카테고리</h5>
-                    <h5 class="text-light" id="placeInfoRating">★★★★★</h5>
+                    <h5 class="text-light" id="placeInfoRating">
+                        <div class="static-star mb-4">
+                            <span class="static-starL">별_왼쪽</span>
+                            <span class="static-starR">별_오른쪽</span>
+                            <span class="static-starL">별_왼쪽</span>
+                            <span class="static-starR">별_오른쪽</span>
+                            <span class="static-starL">별_왼쪽</span>
+                            <span class="static-starR">별_오른쪽</span>
+                            <span class="static-starL">별_왼쪽</span>
+                            <span class="static-starR">별_오른쪽</span>
+                            <span class="static-starL">별_왼쪽</span>
+                            <span class="static-starR">별_오른쪽</span>
+                        </div>
+                    </h5>
                 </div>
             </div>
 
