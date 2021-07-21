@@ -14,8 +14,6 @@ async function clickAddSubmit() {
     let formData = new FormData(addForm);
     let lonlat = formData.get('lonlat')
 
-    console.log(lonlat);
-
     await fetch('/api/place/add', {
         method: 'post',
         credentials: 'same-origin',
