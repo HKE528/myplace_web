@@ -18,11 +18,13 @@ public class PlaceService {
     private final PlaceRepository placeRepository;
     private final MemberRepository memberRepository;
 
-    public void savePlace(String username, PlaceDTO placeDTO) {
+    public Long savePlace(String username, PlaceDTO placeDTO) {
         Member member = memberRepository.findByUsername(username).get();
         Place place = Place.create(placeDTO, member);
 
-        placeRepository.save(place);
+        Place save = placeRepository.save(place);
+
+        return save.getId();
     }
 
     public PlaceDTO findOne(Long id) {
@@ -41,9 +43,11 @@ public class PlaceService {
         placeRepository.deleteById(id);
     }
 
-    public void updatePlace(PlaceDTO dto) {
+    public Long updatePlace(PlaceDTO dto) {
         Place place = placeRepository.findById(dto.getId()).get();
 
         place.changData(dto);
+
+        return place.getId();
     }
 }
