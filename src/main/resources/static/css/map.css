@@ -9,3 +9,7 @@
     left: -20px;
     top: -40px;
 }
+
+.ol-marker-pop:hover {
+    -webkit-filter: invert(20%);
+}

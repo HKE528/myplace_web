@@ -16,13 +16,13 @@ const content = document.getElementById('popup-content');
 
 const clickMarkerId = 1;
 
+const tile = new ol.layer.Tile({ source: new ol.source.OSM() })
+//markerSource = new ol.source.Vector({ wrapX: true });
+//const vector =  new ol.layer.Vector({ source: markerSource });
+
 const map = new ol.Map({
     target: 'map',
-    layers: [
-        new ol.layer.Tile({
-            source: new ol.source.OSM()
-        })
-    ],
+    layers: [tile],
     view: new ol.View({
         center: ol.proj.fromLonLat([127.72800919741388, 37.878953230304404]),
         zoom: 15
@@ -82,6 +82,7 @@ function makeListMarker() {
         let address = (it.children)[0].value;
         let lonlat = ((it.children)[1].value).split(',');
         let category = (it.children)[2].value;
+        let id = (it.children)[3].value;
 
         let coord = ol.proj.fromLonLat([lonlat[0]*1, lonlat[1]*1]);
 
@@ -90,22 +91,42 @@ function makeListMarker() {
 
         let content = document.createElement('div');
 
-        if(category == '카페')        content.innerHTML = cafePin.innerHTML;
-        else if(category == '음식점') content.innerHTML = restaurantPin.innerHTML;
-        else if(category == '편의점') content.innerHTML = conveniencePin.innerHTML;
-        else if(category == '마트')   content.innerHTML = martPin.innerHTML;
-        else if(category == '쇼핑')   content.innerHTML = shopPin.innerHTML;
-        else                         content.innerHTML = otherPin.innerHTML;
+        let clicker = document.createElement('a');
+        let link = "javascript:makerClickEvent(" + id + ");";
+        clicker.setAttribute("href", link);
+
+        clicker.innerHTML = getImage(category);
+
+        content.appendChild(clicker);
 
         container.appendChild(content);
 
         let placeMarker = new ol.Overlay({
+            id: id,
             element: container,
             position: coord
         });
 
         map.addOverlay(placeMarker);
     })
+}
+
+function makerClickEvent(id) {
+    console.log(id);
+    clickListItem(id);
+}
+
+function getImage(category) {
+    let src = "";
+
+        if(category == '카페')        src = cafePin.innerHTML;
+        else if(category == '음식점') src = restaurantPin.innerHTML;
+        else if(category == '편의점') src = conveniencePin.innerHTML;
+        else if(category == '마트')   src = martPin.innerHTML;
+        else if(category == '쇼핑')   src = shopPin.innerHTML;
+        else                         src = otherPin.innerHTML;
+
+    return src;
 }
 
 function markerOverlay(evt) {
