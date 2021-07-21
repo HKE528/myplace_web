@@ -3,6 +3,7 @@ package com.example.myplace.service;
 import com.example.myplace.domain.Member;
 import com.example.myplace.domain.Place;
 import com.example.myplace.domain.dto.PlaceDTO;
+import com.example.myplace.domain.enums.CategoryEnum;
 import com.example.myplace.repository.MemberRepository;
 import com.example.myplace.repository.PlaceRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,22 @@ public class PlaceService {
         Member member = memberRepository.findByUsername(username).get();
 
         return member.getPlaceDTOs();
+    }
+
+    public List<PlaceDTO> findAllMyPlace(String username, String searchText, CategoryEnum cate) {
+        Member member = memberRepository.findByUsername(username).get();
+
+        List<PlaceDTO> placeDTOs = member.getPlaceDTOs();
+
+        if(!searchText.isEmpty()) {
+            placeDTOs = placeDTOs.stream().filter(it -> it.getName().contains(searchText)).toList();
+        }
+
+        if(!cate.equals(CategoryEnum.전체)){
+            placeDTOs = placeDTOs.stream().filter(it -> it.getCategory().equals(cate)).toList();
+        }
+
+        return placeDTOs;
     }
 
     public void deleteOne(Long id) {
