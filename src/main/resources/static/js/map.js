@@ -1,6 +1,6 @@
 const closeBtn2 = document.getElementById('btnClose');
 const btnAdd2 = document.getElementById('btnAdd');
-const addSubmitBtn = document.getElementById('addSubmitBtn');
+const btnEdit2 = document.getElementById('btnEdit');
 
 const defaultPin = document.getElementById('defaultPin');
 const cafePin = document.getElementById('cafePin');
@@ -49,6 +49,11 @@ closeBtn2.onclick = function() {
 }
 
 btnAdd2.onclick = function() {
+    map.addEventListener('singleclick', markerOverlay);
+    return false;
+}
+
+btnEdit2.onclick = function() {
     map.addEventListener('singleclick', markerOverlay);
     return false;
 }
