@@ -15,7 +15,7 @@
         </div>
 
         <div class="w-100 bg-light p-2 scroll-div" style="height: 84.4vh;">
-            <form id="addForm" th:action="@{/api/place/add}">
+            <form id="addForm" th:action="@{/api/place/add}" enctype="multipart/form-data">
                 <input type="hidden" name="lonlat" id="lonlat">
                 <input type="hidden" name="id" id="id">
 
@@ -68,7 +68,8 @@
 
                 <div class="mb-4">
                     <label class="form-label" for="upload">Upload</label>
-                    <input type="file" class="form-control" id="upload">
+                    <input type="file" class="form-control" id="upload" name="imageFiles"
+                           accept="image/jpeg, image/jpg, image/png, image/gif">
                 </div>
 
                 <button type="button" id="addSubmitBtn" class="btn btn-primary" onclick="clickAddSubmit()">작성 완료</button>
