@@ -11,15 +11,18 @@ var curId = -1;
 
 async function clickAddSubmit() {
     let csrfToken = document.querySelector("meta[name='_csrf']").content;
+    let formData = new FormData(addForm);
+    let lonlat = formData.get('lonlat')
+
+    console.log(lonlat);
 
     await fetch('/api/place/add', {
         method: 'post',
         credentials: 'same-origin',
         headers: {
-            "X-CSRF-Token": csrfToken
+            "X-CSRF-Token": csrfToken,
         },
-        body: new URLSearchParams(new FormData(addForm))
-            //body: new URLSearchParams(form)
+        body: new URLSearchParams(formData)
     }).then(res => {
         if (res.ok) {
             refreshList();
@@ -27,6 +30,8 @@ async function clickAddSubmit() {
             addForm.reset();
 
             clickClose();
+
+            setCenterView(lonlat);
         } else {
             //로그인 화면으로!
             alert("..")
@@ -36,7 +41,7 @@ async function clickAddSubmit() {
     setTimeout(function(){
         removeMarkerEvent();
         overlayRefresh();
-    }, 100);
+    }, 150);
 }
 
 function clickAdd() {
@@ -119,7 +124,7 @@ async function clickDelete() {
             setTimeout(function(){
                 removeMarkerEvent();
                 overlayRefresh();
-            }, 100);
+            }, 150);
     }
 }
 
