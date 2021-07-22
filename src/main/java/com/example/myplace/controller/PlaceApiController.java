@@ -46,10 +46,9 @@ public class PlaceApiController {
 
         int imageCount = fileService.checkExistImage(username, id);
         if(imageCount != 0) {
-            String path = "/images/" + username + "/" + id + "/";
-            place.setDir(path);
+            place.setImagePath(fileService.getFilePath(username, id));
         } else {
-            place.setDir(null);
+            place.setImagePath(null);
         }
         place.setImageCount(imageCount);
 

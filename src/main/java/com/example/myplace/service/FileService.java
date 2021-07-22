@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -58,6 +59,21 @@ public class FileService {
         } else {
             return 0;
         }
+    }
+
+    public List<String> getFilePath(String username, Long id) {
+        String divPath = path + username + "/" + id;
+        List<String> list = new ArrayList<>();
+
+        File div = new File(divPath);
+
+        for(File file : div.listFiles()) {
+            String filePath = divPath + "/" + file.getName();
+
+            list.add(filePath);
+        }
+
+        return list;
     }
 
     private void checkAndMkdirs(String path) {
