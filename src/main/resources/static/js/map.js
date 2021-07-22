@@ -64,8 +64,14 @@ function setCenterView(lonlatString) {
 
     let view = map.getView();
 
-    view.setCenter(coord);
-    view.setZoom(18);
+    view.animate({
+        center: coord,
+        duration: 200,
+        zoom: 18
+      });
+
+//    view.setCenter(coord);
+//    view.setZoom(18);
 }
 
 function removeMarkerEvent() {
