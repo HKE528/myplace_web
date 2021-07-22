@@ -34,12 +34,6 @@ public class PlaceService {
         return place.convertDTO();
     }
 
-    public List<PlaceDTO> findAllMyPlace(String username) {
-        Member member = memberRepository.findByUsername(username).get();
-
-        return member.getPlaceDTOs();
-    }
-
     public List<PlaceDTO> findAllMyPlace(String username, String searchText, CategoryEnum cate) {
         Member member = memberRepository.findByUsername(username).get();
 
