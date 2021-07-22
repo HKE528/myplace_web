@@ -40,8 +40,6 @@ public class Place {
     private String comment;
     private float rating;
 
-    @Column(length = 100)
-    private String dir;
     private LocalDate addDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -70,7 +68,6 @@ public class Place {
                 phone,
                 comment,
                 rating,
-                dir,
                 addDate
         );
 
