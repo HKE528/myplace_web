@@ -50,8 +50,10 @@ public class PlaceService {
         return placeDTOs;
     }
 
-    public void deleteOne(Long id) {
+    public boolean deleteOne(Long id) {
         placeRepository.deleteById(id);
+
+        return true;
     }
 
     public Long updatePlace(PlaceDTO dto) {
