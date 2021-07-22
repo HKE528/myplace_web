@@ -68,7 +68,7 @@ public class FileService {
         File div = new File(divPath);
 
         for(File file : div.listFiles()) {
-            String filePath = divPath + "/" + file.getName();
+            String filePath = "/images/" + username + "/" + id + "/" + file.getName();
 
             list.add(filePath);
         }
