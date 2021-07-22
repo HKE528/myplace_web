@@ -123,7 +123,6 @@ function makeListMarker() {
 }
 
 function makerClickEvent(id) {
-    console.log(id);
     clickListItem(id);
 }
 
@@ -178,9 +177,6 @@ function getOverlayInfo(id) {
     let marker = map.getOverlayById(id);
     let markerContent = marker.getElement();
     markerContent.classList.add('ol-marker-highlight');
-
-    console.log(marker);
-    console.log(markerContent);
 }
 
 
