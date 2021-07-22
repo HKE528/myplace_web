@@ -15,18 +15,33 @@ public class FileService {
 
         checkAndMkdirs(basePath);
 
-        int index = 1;
-        for(MultipartFile file : files) {
-            String destPath = basePath + "/" + index + getExtension(file);
+        try {
+            int index = 1;
+            for (MultipartFile file : files) {
+                String destPath = basePath + "/" + index + getExtension(file);
 
-            File destFile = new File(destPath);
+                File destFile = new File(destPath);
 
-            try {
+
                 file.transferTo(destFile);
-            } catch (Exception e) {
-                e.printStackTrace();
+
+                index++;
             }
-            index++;
+        } catch (IllegalStateException e) {
+            System.out.println("파일이 없거나 지원하지 않는 형식");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean checkExistImage(String username, Long id) {
+        String filePath = path + username + "/" + id;
+        File div = new File(filePath);
+
+        if(div.exists()) {
+            return div.listFiles().length != 0;
+        } else {
+            return false;
         }
     }
 

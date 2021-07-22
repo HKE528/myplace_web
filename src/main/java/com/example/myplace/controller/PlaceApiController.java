@@ -27,23 +27,29 @@ public class PlaceApiController {
             id = placeService.savePlace(username, placeDTO);
         } else {
             String name = placeDTO.getName();
-            System.out.println("Update : " + name);
 
             id = placeService.updatePlace(placeDTO);
         }
 
-        if(id != null && files != null) {
+        if(id != null && files.size() != 0) {
             fileService.saveFile(username, id, files);
-        } else if(files == null) {
-            System.out.println(id + " : file is Null!!!");
         }
 
         return id;
     }
 
     @GetMapping("/view/{id}")
-    public PlaceDTO viewPlace(@PathVariable("id") Long id) {
+    public PlaceDTO viewPlace(@PathVariable("id") Long id, Principal principal) {
         PlaceDTO place = placeService.findOne(id);
+
+        String username = principal.getName();
+        boolean existImage = fileService.checkExistImage(username, id);
+        if(existImage) {
+            String path = "/images/" + username + "/" + id + "/";
+            place.setDir(path);
+        } else {
+            place.setDir(null);
+        }
 
         return place;
     }
