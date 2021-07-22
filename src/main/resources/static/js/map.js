@@ -24,8 +24,8 @@ const map = new ol.Map({
     target: 'map',
     layers: [tile],
     view: new ol.View({
-        center: ol.proj.fromLonLat([127.72800919741388, 37.878953230304404]),
-        zoom: 15
+        center: ol.proj.fromLonLat([128.10112032089046, 36.647583843349935]),
+        zoom: 8
     })
 });
 
