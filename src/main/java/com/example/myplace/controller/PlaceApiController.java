@@ -43,19 +43,23 @@ public class PlaceApiController {
         PlaceDTO place = placeService.findOne(id);
 
         String username = principal.getName();
-        boolean existImage = fileService.checkExistImage(username, id);
-        if(existImage) {
+
+        int imageCount = fileService.checkExistImage(username, id);
+        if(imageCount != 0) {
             String path = "/images/" + username + "/" + id + "/";
             place.setDir(path);
         } else {
             place.setDir(null);
         }
+        place.setImageCount(imageCount);
 
         return place;
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deletePlace(@PathVariable("id") Long id) {
-        placeService.deleteOne(id);
+    public void deletePlace(@PathVariable("id") Long id, Principal principal) {
+        if(placeService.deleteOne(id)){
+            fileService.deleteImages(principal.getName(), id);
+        }
     }
 }

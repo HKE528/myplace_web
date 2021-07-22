@@ -22,7 +22,6 @@ public class FileService {
 
                 File destFile = new File(destPath);
 
-
                 file.transferTo(destFile);
 
                 index++;
@@ -34,14 +33,30 @@ public class FileService {
         }
     }
 
-    public boolean checkExistImage(String username, Long id) {
+    public void deleteImages(String username, Long id) {
+        if(checkExistImage(username, id) == 0)  return;
+
+        String placeDiv = path + username + "/" + id;
+
+        File div = new File(placeDiv);
+
+        for(File image : div.listFiles()) {
+            image.delete();
+        }
+
+        if(div.listFiles().length == 0) {
+            div.delete();
+        }
+    }
+
+    public int checkExistImage(String username, Long id) {
         String filePath = path + username + "/" + id;
         File div = new File(filePath);
 
         if(div.exists()) {
-            return div.listFiles().length != 0;
+            return div.listFiles().length;
         } else {
-            return false;
+            return 0;
         }
     }
 
