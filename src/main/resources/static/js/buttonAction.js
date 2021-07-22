@@ -20,7 +20,7 @@ async function clickAddSubmit() {
         headers: {
             "X-CSRF-Token": csrfToken,
         },
-        body: new URLSearchParams(formData)
+        body: formData
     }).then(res => {
         if (res.ok) {
             refreshList();
@@ -32,7 +32,7 @@ async function clickAddSubmit() {
             setCenterView(lonlat);
         } else {
             //로그인 화면으로!
-            alert("..")
+            alert("지도에 위치를 나타내 주세요")
         }
     });
 
