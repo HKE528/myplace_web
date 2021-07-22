@@ -160,4 +160,27 @@ function markerOverlay(evt) {
     });
 }
 
+function overlayHighlight(id) {
+    removeOverlayHighlight()
+
+    getOverlayInfo(id);
+}
+
+function removeOverlayHighlight() {
+    let allOverlay = map.getOverlays();
+
+    allOverlay.forEach(it => {
+         it.getElement().classList.remove('ol-marker-highlight');
+    });
+}
+
+function getOverlayInfo(id) {
+    let marker = map.getOverlayById(id);
+    let markerContent = marker.getElement();
+    markerContent.classList.add('ol-marker-highlight');
+
+    console.log(marker);
+    console.log(markerContent);
+}
+
 

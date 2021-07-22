@@ -104,6 +104,8 @@ async function clickListItem(id) {
             showRating(data.rating);
 
             setCenterView(data.lonlat);
+
+            overlayHighlight(id);
         });
 }
 
