@@ -143,12 +143,19 @@ async function clickUpdate() {
     setVisible(addLayout);
     setVisible(closeBtn);
 
-    document.getElementById('id').value = curId;
-    document.getElementById('name').value = placeInfoName.innerText;
-    setCategorySelect(placeInfoCategory.innerText);
-    document.getElementById('address').value = placeInfoAddress.innerText;
-    document.getElementById('phone').value = placeInfoPhone.innerText;
-    document.getElementById('comment').value = placeInfoComment.innerText;
+    await fetch('/api/place/view/' + curId)
+            .then(res => res.json())
+            .then(data => {
+                    document.getElementById('id').value = curId;
+                    document.getElementById('lonlat').value = data.lonlat;
+                    document.getElementById('rating').value = data.rating;
+                    editSetRating(data.rating);
+                    document.getElementById('name').value = data.name;
+                    setCategorySelect(data.category);
+                    document.getElementById('phone').value = data.phone;
+                    document.getElementById('address').value = data.address;
+                    document.getElementById('comment').value = data.comment;
+            });
 }
 
 function setCategorySelect(selValue) {

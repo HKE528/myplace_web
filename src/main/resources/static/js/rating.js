@@ -22,6 +22,15 @@ function showRating(rating) {
     }
 }
 
+function editSetRating(rating) {
+    refreshRating();
+
+    for(var i = 0; i < rating; i++) {
+        let star = $('.starRev').children('span')[i];
+        star.classList.add('on')
+    }
+}
+
 function refreshRating(){
     let stars = $('.starRev').children('span');
 
