@@ -57,6 +57,10 @@
     -webkit-filter: invert(20%);
 }
 
+.custom-btn:hover{
+    -webkit-filter: invert(40%);
+}
+
 .selected {
     margin-left: 5px;
     background-color: #7F7F7F;

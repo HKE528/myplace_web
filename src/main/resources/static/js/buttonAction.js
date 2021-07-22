@@ -93,6 +93,7 @@ async function clickListItem(id) {
     await fetch('/api/place/view/' + id)
         .then(res => res.json())
         .then(data => {
+            setImageView(data.imageCount ,data.imagePath)
 
             placeInfoName.innerText = data.name;
             placeInfoCategory.innerText = data.category;

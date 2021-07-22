@@ -68,8 +68,7 @@
 
                 <div class="mb-4">
                     <label class="form-label" for="upload">Upload</label>
-                    <input type="file" class="form-control" id="upload" name="imageFiles"
-                           accept="image/jpeg, image/jpg, image/png, image/gif" multiple>
+                    <input type="file" class="form-control" id="upload" name="imageFiles" accept="image/jpeg, image/jpg, image/png, image/gif" multiple>
                 </div>
 
                 <button type="button" id="addSubmitBtn" class="btn btn-primary" onclick="clickAddSubmit()">작성 완료</button>
@@ -110,9 +109,35 @@
             </div>
 
             <div class="bg-light w-100 pt-2 px-3" style="height: 80.5vh;">
-                <div class="w-100" style="height: 30vh;">
-                    <img th:src="@{/image/noImage.jpg}" width="100%" height="100%">
+
+                <!-- 이미지 뷰어 -->
+                <div class="w-100" style="height: 30%;">
+                    <img id="nonImage" th:src="@{/image/noImage.jpg}" width="100%" height="100%">
+
+                    <div id="isImage" class="hideDiv w-100" style="height: 100%;">
+                        <div id="carouselImageViewer" class="carousel slide h-100" data-bs-ride="carousel">
+                            <!-- 이미지 인텍스 표시 -->
+                            <div class="carousel-indicators" id="viewerIndex"> </div>
+
+                            <!-- 이미지 -->
+                            <div class="carousel-inner h-100" id="viewerItem"> </div>
+
+                            <!-- 다음 이전 버튼 -->
+                            <button class="carousel-control-prev custom-btn" type="button" data-bs-target="#carouselImageViewer" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+
+                            <button class="carousel-control-next custom-btn" type="button" data-bs-target="#carouselImageViewer" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+
+                        </div>
+                    </div>
+
                 </div>
+
                 <div class="w-100 mt-2 pb-1 py-2 border-bottom">
                     <h3> 주소 </h3>
                     <h5 id="placeInfoAddress"> 강원도 춘천시 어쩌고 저쩌고</h5>
@@ -161,5 +186,23 @@
         </th:block>
     </div>
 </div>
+
+<!--<div id="carouselImageViewer" class="carousel slide" data-bs-ride="carousel">
+    &lt;!&ndash; 이미지 인텍스 표시 &ndash;&gt;
+    <div class="carousel-indicators" id="viewerIndex"> </div>
+
+    &lt;!&ndash; 이미지 &ndash;&gt;
+    <div class="carousel-inner" id="viewerItem"> </div>
+
+    &lt;!&ndash; 다음 이전 버튼 &ndash;&gt;
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselImageViewer" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselImageViewer" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>-->
 
 </html>
