@@ -27,8 +27,6 @@ public class HomeController {
     public String home(@RequestParam(value = "searchText", defaultValue = "") String searchText,
                        @RequestParam(value = "selCate", defaultValue = "전체") CategoryEnum selCate,
                        Model model, Principal principal) {
-        System.out.println("Home!");
-
         if(principal != null) {
             List<PlaceDTO> allMyPlace = placeService.findAllMyPlace(principal.getName(), searchText, selCate);
 
