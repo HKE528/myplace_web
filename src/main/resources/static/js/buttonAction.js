@@ -24,6 +24,7 @@ async function clickAddSubmit() {
     }).then(res => {
         if (res.ok) {
             refreshList();
+            refreshRating();
 
             addForm.reset();
 
@@ -61,6 +62,8 @@ function clickClose() {
     setInvisible(closeBtn);
     setInvisible(editBtn);
     setInvisible(deleteBtn);
+
+    refreshRating();
 
     curId = -1;
 }

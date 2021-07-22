@@ -10,12 +10,26 @@ $('.starRev span').click(function(){
 });
 
 function showRating(rating) {
-    let stars = $('.static-star').children('span');
+//    let stars = $('.static-star').children('span');
+//
+//    stars.removeClass('on');
 
-    stars.removeClass('on');
+    refreshStaticRating();
 
     for(var i = 0; i < rating; i++) {
         let star = $('.static-star').children('span')[i];
         star.classList.add('on')
     }
+}
+
+function refreshRating(){
+    let stars = $('.starRev').children('span');
+
+    stars.removeClass('on');
+}
+
+function refreshStaticRating() {
+    let stars = $('.static-star').children('span');
+
+    stars.removeClass('on');
 }
