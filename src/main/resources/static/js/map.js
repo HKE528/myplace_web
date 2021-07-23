@@ -60,7 +60,7 @@ btnEdit2.onclick = function() {
 
 function setCenterView(lonlatString) {
     let lonlat = lonlatString.split(',');
-    let coord = ol.proj.fromLonLat([lonlat[0]*1, lonlat[1]*1]);
+    let coord = ol.proj.fromLonLat([lonlat[0]*1 + 0.001, lonlat[1]*1]);
 
     let view = map.getView();
 
