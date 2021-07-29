@@ -21,6 +21,7 @@ const clickMarkerId = 1;
 const tile = new ol.layer.Tile({
     source: new ol.source.OSM(),
 });
+const hybridLayer = new ol.layer.Tile();
 // const OSM = new ol.source.OSM();
 
 const mapView = new ol.View({
@@ -30,7 +31,7 @@ const mapView = new ol.View({
 
 const map = new ol.Map({
     target: 'map',
-    layers: [tile],
+    layers: [tile, hybridLayer],
     view: mapView
 });
 
@@ -45,43 +46,51 @@ function selectMap() {
         case 'osm':
             source = getOSM();
             mapView.setMinZoom(1);
+            mapView.setMaxZoom(28);
             break;
 
         case 'v2':
             source = getVWorld('2d');
             mapView.setMinZoom(6);
+            mapView.setMaxZoom(19);
             // mapView.set('extent', extent)
             break;
 
         case 'vs':
             source = getVWorld('s');
             mapView.setMinZoom(6);
+            mapView.setMaxZoom(19);
             break;
 
         case 'k2':
             source = getKakao('2d');
             mapView.setMinZoom(6);
+            mapView.setMaxZoom(20);
             break;
 
         case 'ks':
             source = getKakao('s');
             mapView.setMinZoom(6);
+            mapView.setMaxZoom(22);
             break;
 
         case 'n2':
             source = getNaver('2d');
             mapView.setMinZoom(6);
+            mapView.setMaxZoom(22);
             break;
 
         case 'ns':
             source = getNaver('s');
             mapView.setMinZoom(6);
+            mapView.setMaxZoom(22);
             break;
     }
 
     // console.log("after extent : " + mapView.get('extent'))
 
-    tile.setSource(source);
+    tile.setSource(source[0]);
+    hybridLayer.setSource(source[1]);
 }
 
 const clickMarker = new ol.Overlay({
