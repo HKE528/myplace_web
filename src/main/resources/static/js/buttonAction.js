@@ -37,7 +37,7 @@ async function clickAddSubmit() {
         }
     });
 
-    setTimeout(function(){
+    setTimeout(function() {
         removeMarkerEvent();
         overlayRefresh();
     }, 150);
@@ -56,6 +56,9 @@ function clickAdd() {
 }
 
 function clickClose() {
+    document.getElementById('id').value = null;
+    document.getElementById('lonlat').value = null;
+
     setInvisible(col)
     setInvisible(infoLayout);
     setInvisible(addLayout);
@@ -91,7 +94,7 @@ async function clickListItem(id) {
     await fetch('/api/place/view/' + id)
         .then(res => res.json())
         .then(data => {
-            setImageView(data.imageCount ,data.imagePath)
+            setImageView(data.imageCount, data.imagePath)
 
             placeInfoName.innerText = data.name;
             placeInfoCategory.innerText = data.category;
@@ -127,10 +130,10 @@ async function clickDelete() {
                 }
             });
 
-            setTimeout(function(){
-                removeMarkerEvent();
-                overlayRefresh();
-            }, 150);
+        setTimeout(function() {
+            removeMarkerEvent();
+            overlayRefresh();
+        }, 150);
     }
 }
 
@@ -144,26 +147,26 @@ async function clickUpdate() {
     setVisible(closeBtn);
 
     await fetch('/api/place/view/' + curId)
-            .then(res => res.json())
-            .then(data => {
-                    document.getElementById('id').value = curId;
-                    document.getElementById('lonlat').value = data.lonlat;
-                    document.getElementById('rating').value = data.rating;
-                    editSetRating(data.rating);
-                    document.getElementById('name').value = data.name;
-                    setCategorySelect(data.category);
-                    document.getElementById('phone').value = data.phone;
-                    document.getElementById('address').value = data.address;
-                    document.getElementById('comment').value = data.comment;
-            });
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('id').value = curId;
+            document.getElementById('lonlat').value = data.lonlat;
+            document.getElementById('rating').value = data.rating;
+            editSetRating(data.rating);
+            document.getElementById('name').value = data.name;
+            setCategorySelect(data.category);
+            document.getElementById('phone').value = data.phone;
+            document.getElementById('address').value = data.address;
+            document.getElementById('comment').value = data.comment;
+        });
 }
 
 function setCategorySelect(selValue) {
     let selBox = document.getElementById('categorySelect')
     let size = selBox.length;
 
-    for(i = 0; i < size; i++) {
-        if(selBox.options[i].value == selValue){
+    for (i = 0; i < size; i++) {
+        if (selBox.options[i].value == selValue) {
             selBox.options[i].selected = true;
             break;
         }
