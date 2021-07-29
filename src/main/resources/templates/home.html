@@ -60,6 +60,18 @@
             <div class="col position-relative">
                 <div th:replace="layouts/map :: map" > </div>
 
+                <div class="position-absolute top-0 end-0 mt-2 me-5">
+                    <select class="form-select" id="selMap" onchange="selectMap()">
+                        <option value="osm" selected>OSM - 일반도</option>
+                        <option value="v2">브이월드 - 일반도</option>
+                        <option value="vs">브이월드 - 위성도</option>
+                        <option value="k2">카카오 - 일반도</option>
+                        <option value="ks">카카오 - 위성도</option>
+                        <option value="n2">네이버 - 일반도</option>
+                        <option value="ns">네이버 - 위성도</option>
+                    </select>
+                </div>
+
                 <div th:replace="layouts/map :: map-utils" > </div>
 
                 <div th:replace="layouts/button :: buttons"> </div>
