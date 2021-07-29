@@ -2,8 +2,9 @@ defineEPSG();
 
 function getOSM() {
     let OSM = new ol.source.OSM();
+    let layer = new ol.source.XYZ();
 
-    return OSM;
+    return [OSM, layer];
 }
 
 function getVWorld(type) {
