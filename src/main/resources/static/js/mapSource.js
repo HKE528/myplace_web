@@ -34,6 +34,8 @@ function getNaver(type) {
 
     if (type == '2d') {
         mapUrl = "https://map.pstatic.net/nrb/styles/basic/1626941278/{z}/{x}/{y}.png?mt=bg.ol.ts.lko";
+    } else if (type == 'g') {
+        mapUrl = "https://map.pstatic.net/nrb/styles/terrain/1626941278/{z}/{x}/{y}.png?mt=bg.ol.ts.lko"
     } else {
         mapUrl = "https://map.pstatic.net/nrb/styles/satellite/1626941278/{z}/{x}/{y}.png?mt=bg.ol.ts.lko";
     }
@@ -55,6 +57,9 @@ function getKakao(type) {
 
     if (type == '2d') {
         mapUrl = "https://map{0-3}.daumcdn.net/map_2d/2106wof/L{z}/{y}/{x}.png";
+    } else if (type == 'g') {
+        mapUrl = "https://map{0-3}.daumcdn.net/map_2d/2106wof/L{z}/{y}/{x}.png";
+        layerUrl = 'https://map{0-3}.daumcdn.net/map_shaded_relief/3.00/L{z}/{y}/{x}.png';
     } else {
         mapUrl = 'https://map{0-3}.daumcdn.net/map_skyview/L{z}/{y}/{x}.jpg?v=160114';
         layerUrl = 'https://map{0-3}.daumcdn.net/map_hybrid/2106wof/L{z}/{y}/{x}.png';

@@ -68,6 +68,12 @@ function selectMap() {
             mapView.setMaxZoom(20);
             break;
 
+        case 'kg':
+            source = getKakao('g');
+            mapView.setMinZoom(6);
+            mapView.setMaxZoom(20);
+            break;
+
         case 'ks':
             source = getKakao('s');
             mapView.setMinZoom(6);
@@ -76,6 +82,12 @@ function selectMap() {
 
         case 'n2':
             source = getNaver('2d');
+            mapView.setMinZoom(6);
+            mapView.setMaxZoom(22);
+            break;
+
+        case 'ng':
+            source = getNaver('g');
             mapView.setMinZoom(6);
             mapView.setMaxZoom(22);
             break;
